@@ -13,10 +13,14 @@ contract OBULU {
     mapping(address => mapping(address => uint256)) public allowance;
 
     event Transfer(address indexed from, address indexed to, uint256 value);
-    event Approval(address indexed owner, address indexed spender, uint256 value);
+    event Approval(
+        address indexed owner,
+        address indexed spender,
+        uint256 value
+    );
     event Burn(address indexed burner, uint256 value);
 
-    constructor(string memory _name , string memory _symbol ) {
+    constructor(string memory _name, string memory _symbol) {
         name = _name;
         symbol = _symbol;
         owner = msg.sender;
@@ -46,7 +50,11 @@ contract OBULU {
         return true;
     }
 
-    function transferFrom(address from, address to, uint256 amount) external returns (bool) {
+    function transferFrom(
+        address from,
+        address to,
+        uint256 amount
+    ) external returns (bool) {
         require(from != address(0), "Transfer from zero address");
         require(to != address(0), "Transfer to zero address");
         require(balanceOf[from] >= amount, "Insufficient balance");
